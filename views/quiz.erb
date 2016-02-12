@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="/quiz.css">
+		<title>Movie Lovers' Quiz</title>
+	</head>
+<body>
+<p>Which movie was produced in <%=@year%>? Click on the correct answer.
+<p>
+<% @movies.each do |m| %>
+	<% correct = m.year == "1975" %> 
+	<img src="<%= m.poster %>" 
+		<% if m.year == @year %> onClick="alert('Yay')" <% end %> />
+
+<% end %>
+
+</body>
+</html>
