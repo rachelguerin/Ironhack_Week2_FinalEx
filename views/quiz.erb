@@ -3,16 +3,26 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="/quiz.css">
 		<title>Movie Lovers' Quiz</title>
+	<script type="text/javascript">
+		function correct(id) {
+			document.getElementById(id).style.backgroundColor = 'green';
+		}
+		function incorrect(id) {
+			document.getElementById(id).style.backgroundColor = 'red';
+		}
+	</script>
 	</head>
 <body>
-<p>Which movie was produced in <%=@year%>? Click on the correct answer.
-<p>
+<h1>Which movie was produced in <%=@year%>? Click on the correct answer.</h1>
+<p><div class="center"><div class="movies">
 <% @movies.each do |m| %>
-	<% correct = m.year == "1975" %> 
-	<img src="<%= m.poster %>" 
-		<% if m.year == @year %> onClick="alert('Yay')" <% end %> />
+	<img src="<%= m.poster %>" id="<%= m.id %>"
+		<% if m.year == @year %> onClick="correct('<%=m.id%>');" 
+		<% else %> onClick="incorrect('<%=m.id%>');"
+		<% end %> />
 
-<% end %>
+<% end %></div></div></p>
+<p><a href="/">Return</a></p>
 
 </body>
 </html>

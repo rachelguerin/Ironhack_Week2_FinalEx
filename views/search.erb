@@ -10,5 +10,7 @@
 <input type="text" name="search_term" placeholder="Enter a search term">
 <button type="submit" name="search_for_movies">Search</button>
 </form>
-
+<% if @err == "no_results" %>
+There are not enough search results. Please try a different search.
+<% end %>
 </body>
